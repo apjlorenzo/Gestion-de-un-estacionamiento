@@ -19,14 +19,23 @@ namespace Proyecto_1
         }
         public override void AgregarVehiculo()
         {
-            base.AgregarVehiculo();
-            Console.Write("Ingrese el número de puertas del vehículo: ");
-            int puertas = int.Parse(Console.ReadLine());
-            Console.Write("Ingrese el tipo de transmisión del vehículo (Manual/Automático): ");
-            string transmision = Console.ReadLine();
-            Console.Write("Ingrese el tipo de auto: ");
-            string auto = Console.ReadLine();
-            listaVehiculos.Add(new Auto(Placa, Marca, Modelo,Color,Año,puertas,transmision,auto));
+            if (listaVehiculos.Count < capacidadMaxima)
+            {
+                base.AgregarVehiculo();
+                Console.Write("Ingrese el número de puertas del vehículo: ");
+                int puertas = int.Parse(Console.ReadLine());
+                Console.Write("Ingrese el tipo de transmisión del vehículo (Manual/Automático): ");
+                string transmision = Console.ReadLine();
+                Console.Write("Ingrese el tipo de auto: ");
+                string auto = Console.ReadLine();
+                listaVehiculos.Add(new Auto(Placa, Marca, Modelo, Color, Año, puertas, transmision, auto));
+                menu.MensajeRegistrar();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("El estacionamiento está lleno.");
+            }
         }
     }
 }

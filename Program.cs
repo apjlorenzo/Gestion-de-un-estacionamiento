@@ -1,11 +1,14 @@
 ﻿using Proyecto_1;
 
-DateOnly time = new DateOnly();
+
 Menu menu = new Menu();
-Vehiculo vehiculo = new Vehiculo(null,null,null,null,0);
+Auto auto = new Auto(null, null, null, null, 0,0,null,null);
 bool condicionUno = true;
 try
 {
+    Console.WriteLine(":::.Bienvenido al sistema de estacionamiento.:::");
+    Console.WriteLine("________________________________________________");
+    menu.MensajeContinuar();
     do
     {
         menu.MenuPrincipal();
@@ -25,8 +28,8 @@ try
                             switch (opcionDos)
                             {
                                 case 1:
-                                    vehiculo.AgregarVehiculo();
-                                    menu.MensajeRegistrar();
+                                    auto.AgregarVehiculo();
+                                    menu.MensajeContinuar();
                                     break;
                                 case 2:
                                     break;
@@ -47,13 +50,10 @@ try
                             Console.Clear();
                             Console.WriteLine(ex.Message);
                             Console.ReadKey();
-                        } 
+                        }
                     }
                     break;
                 case 2:
-                    Console.Clear();
-                    Console.WriteLine(time);
-                    Console.ReadKey();
                     break;
                 case 3:
                     break;

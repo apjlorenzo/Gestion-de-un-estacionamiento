@@ -8,6 +8,8 @@ namespace Proyecto_1
 {
     public class Vehiculo
     {
+        public Menu menu = new Menu();
+        public int capacidadMaxima = 2;
         public List<Vehiculo> listaVehiculos = new List<Vehiculo>();
         protected string Placa { get; set; }
         public string Marca { get; set; }

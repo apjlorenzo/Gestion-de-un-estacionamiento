@@ -37,6 +37,9 @@ namespace Proyecto_1
         {
             Console.Clear();
             Console.WriteLine("Vehículo registrado correctamente.");
+        }
+        public void MensajeContinuar()
+        {
             Console.Write("\nPresione una tecla para continuar: ");
             Console.ReadKey();
         }
