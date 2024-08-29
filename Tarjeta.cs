@@ -11,6 +11,13 @@ namespace Proyecto_1
         public int NumeroTarjeta { get; set; }
         public string Nombre { get; set; }
         public string Fecha { get; set; }
-        public int MyProperty { get; set; }
+        public int CVV { get; set; }
+        public Tarjeta(int numeroTarjeta, string nombre, string fecha, int cVV)
+        {
+            NumeroTarjeta = numeroTarjeta;
+            Nombre = nombre;
+            Fecha = fecha;
+            CVV = cVV;
+        }
     }
 }

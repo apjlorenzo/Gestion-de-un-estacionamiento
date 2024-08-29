@@ -1,5 +1,6 @@
 ﻿using Proyecto_1;
 
+DateOnly time = new DateOnly();
 Menu menu = new Menu();
 Vehiculo vehiculo = new Vehiculo(null,null,null,null,0);
 bool condicionUno = true;
@@ -50,6 +51,9 @@ try
                     }
                     break;
                 case 2:
+                    Console.Clear();
+                    Console.WriteLine(time);
+                    Console.ReadKey();
                     break;
                 case 3:
                     break;
