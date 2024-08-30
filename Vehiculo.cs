@@ -9,7 +9,7 @@ namespace Proyecto_1
     public class Vehiculo
     {
         public Menu menu = new Menu();
-        public int capacidadMaxima = 2;
+        public int capacidadMaxima = 1;
         public List<Vehiculo> listaVehiculos = new List<Vehiculo>();
         protected string Placa { get; set; }
         public string Marca { get; set; }
@@ -27,8 +27,7 @@ namespace Proyecto_1
         }
         public virtual void AgregarVehiculo()
         {
-            Console.Clear();
-            Console.Write("Ingrese la placa del vehículo: ");
+            Console.Write("\nIngrese la placa del vehículo: ");
             string placa = Console.ReadLine();
             Console.Write("Ingrese la marca del vehículo: ");
             string marca = Console.ReadLine();

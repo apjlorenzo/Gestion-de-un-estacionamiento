@@ -2,11 +2,13 @@
 
 
 Menu menu = new Menu();
-Auto auto = new Auto(null, null, null, null, 0,0,null,null);
+Auto auto = new Auto(null, null, null, null, 0,0);
+Moto moto = new Moto(null,null,null,null,0,null);
+Camion camion = new Camion(null,null,null,null,0,null);
 bool condicionUno = true;
 try
 {
-    Console.WriteLine(":::.Bienvenido al sistema de estacionamiento.:::");
+    Console.WriteLine(".:::Bienvenido al sistema de estacionamiento:::.");
     Console.WriteLine("________________________________________________");
     menu.MensajeContinuar();
     do
@@ -32,8 +34,12 @@ try
                                     menu.MensajeContinuar();
                                     break;
                                 case 2:
+                                    moto.AgregarVehiculo();
+                                    menu.MensajeContinuar();
                                     break;
                                 case 3:
+                                    camion.AgregarVehiculo();
+                                    menu.MensajeContinuar();
                                     break;
                                 case 4:
                                     continuarDos = false;

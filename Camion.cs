@@ -8,14 +8,29 @@ namespace Proyecto_1
 {
     public class Camion : Vehiculo
     {
-        public string Tipo { get; set; }
-        public string Capacidad { get; set; }
         public string Tamaño { get; set; }
-        public Camion(string placa, string marca, string modelo, string color, int año, string tipo, string capacidad, string tamaño) : base (placa,marca,modelo,color,año)
+        public Camion(string placa, string marca, string modelo, string color, int año, string tamaño) : base (placa,marca,modelo,color,año)
         {
-            Tipo = tipo;
-            Capacidad = capacidad;
             Tamaño = tamaño;
+        }
+        public override void AgregarVehiculo()
+        {
+            if (listaVehiculos.Count < capacidadMaxima)
+            {
+                Console.Clear();
+                Console.WriteLine(".::::::::::::Agregar Camión::::::::::::.");
+                Console.WriteLine("______________________________________");
+                base.AgregarVehiculo();
+                Console.Write("Ingrese el tamaño del  camión (Grande/Muy Grande): ");
+                string tamaño = Console.ReadLine();
+                listaVehiculos.Add(new Moto(Placa, Marca, Modelo, Color, Año, tamaño));
+                menu.MenuRegistrar();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("El estacionamiento está lleno.");
+            }
         }
     }
 }
