@@ -2,14 +2,15 @@
 
 
 Menu menu = new Menu();
-Auto auto = new Auto(null, null, null, null, 0,0);
-Moto moto = new Moto(null,null,null,null,0,null);
-Camion camion = new Camion(null,null,null,null,0,null);
+DateTime time = DateTime.MinValue;
+Auto auto = new Auto(null,null,null,null,0,time);
+Moto moto = new Moto(null,null,null,null,0,time,null);
+Camion camion = new Camion(null,null,null,null,0,time,null);
 bool condicionUno = true;
 try
 {
-    Console.WriteLine(".:::Bienvenido al sistema de estacionamiento:::.");
-    Console.WriteLine("________________________________________________");
+    Console.WriteLine(".:::Bienvenido al sistema de gestión y cobro del estacionamiento:::.");
+    Console.WriteLine("____________________________________________________________________");
     menu.MensajeContinuar();
     do
     {
@@ -35,7 +36,6 @@ try
                                     break;
                                 case 2:
                                     moto.AgregarVehiculo();
-                                    menu.MensajeContinuar();
                                     break;
                                 case 3:
                                     camion.AgregarVehiculo();
@@ -60,8 +60,32 @@ try
                     }
                     break;
                 case 2:
+                    Console.Clear();
+                    Console.WriteLine("Ingrese el tipo de vehículo a retirar: ");
+                    int tipo = int.Parse(Console.ReadLine());
+                    if (tipo == 1)
+                    {
+                        auto.RetirarVehiculo();
+                    }
+                    else if (tipo == 2)
+                    {
+                        moto.RetirarVehiculo();
+                    }
+                    else if (tipo == 3)
+                    {
+                        camion.RetirarVehiculo();
+                    }
+                    Console.ReadKey();
                     break;
                 case 3:
+                    Console.Clear();
+                    Console.WriteLine("Autos estacionados: :");
+                    auto.MostrarInfo();
+                    Console.WriteLine("\nMotos estacionadas: ");
+                    moto.MostrarInfo();
+                    Console.WriteLine("\nCamiones estacionados: ");
+                    camion.MostrarInfo();
+                    Console.ReadKey();
                     break;
                 case 4:
                     break;

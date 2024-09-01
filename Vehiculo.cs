@@ -9,34 +9,57 @@ namespace Proyecto_1
     public class Vehiculo
     {
         public Menu menu = new Menu();
-        public int capacidadMaxima = 1;
-        public List<Vehiculo> listaVehiculos = new List<Vehiculo>();
-        protected string Placa { get; set; }
+        public string placa;
+        public string marca;
+        public string modelo;
+        public string color;
+        public int año;
+        public DateTime horaEntrada;
+        public List<Vehiculo> listaVehiculos = new List<Vehiculo>(2);
+
+        public string Placa { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public string Color { get; set; }
         public int Año { get; set; }
-
-        public Vehiculo(string placa, string marca, string modelo, string color, int año)
+        public DateTime HoraEntrada { get; set; }
+        public Vehiculo(string placa, string marca, string modelo, string color, int año, DateTime horaEntrada)
         {
             Placa = placa;
             Marca = marca;
             Modelo = modelo;
             Color = color;
             Año = año;
+            HoraEntrada = horaEntrada;
         }
         public virtual void AgregarVehiculo()
         {
+            horaEntrada = DateTime.Now;
             Console.Write("\nIngrese la placa del vehículo: ");
-            string placa = Console.ReadLine();
+            placa = Console.ReadLine();
             Console.Write("Ingrese la marca del vehículo: ");
-            string marca = Console.ReadLine();
+            marca = Console.ReadLine();
             Console.Write("Ingrese el modelo del vehículo: ");
-            string modelo = Console.ReadLine();
+            modelo = Console.ReadLine();
             Console.Write("Ingrese el color del vehículo: ");
-            string color = Console.ReadLine();
+            color = Console.ReadLine();
             Console.Write("Ingrese el año de lanzamiento del vehículo: ");
-            int año = int.Parse(Console.ReadLine());
+            año = int.Parse(Console.ReadLine());
+        }
+        public virtual void MostrarInfo()
+        {
+            foreach (Auto auto in listaVehiculos)
+            {
+                int i = 1;
+                Console.WriteLine($"\nInformación del auto No.{i}:");
+                Console.WriteLine("Placa: " + auto.Placa);
+                Console.WriteLine("Marca: " + auto.Marca);
+                Console.WriteLine("Modelo: " + auto.Modelo);
+                Console.WriteLine("Color: " + auto.Color);
+                Console.WriteLine("Año: " + auto.Año);
+                Console.WriteLine("Fecha de ingreso: " + auto.HoraEntrada);
+
+            }
         }
     }
 }
