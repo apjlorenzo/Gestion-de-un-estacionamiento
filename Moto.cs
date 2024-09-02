@@ -76,6 +76,7 @@ namespace Proyecto_1
                     Pago pago = new Pago(costoTotal);
                     pago.ProcesarPagoEfectivo();
                     listaVehiculos.Remove(encontrar);
+                    Console.WriteLine("Vehículo removido del sistema.");
                 }
                 else if (metodo == 2)
                 {
