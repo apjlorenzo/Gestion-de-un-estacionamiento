@@ -19,11 +19,11 @@ namespace Proyecto_1
         public DateTime fechaFactura;
         public List<Vehiculo> listaVehiculos = new List<Vehiculo>(2);
 
-        public string Placa { get; set; }
-        public string Marca { get; set; }
-        public string Modelo { get; set; }
-        public string Color { get; set; }
-        public int Año { get; set; }
+        protected string Placa { get; set; }
+        protected string Marca { get; set; }
+        protected string Modelo { get; set; }
+        protected string Color { get; set; }
+        protected int Año { get; set; }
         public DateTime HoraEntrada { get; set; }
         public Vehiculo(string placa, string marca, string modelo, string color, int año, DateTime horaEntrada)
         {

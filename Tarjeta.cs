@@ -9,10 +9,10 @@ namespace Proyecto_1
     public class Tarjeta
     {
         public bool verificación = false;
-        public int NumeroTarjeta { get; set; }
-        public string Nombre { get; set; }
-        public string Fecha { get; set; }
-        public int CVV { get; set; }
+        private int NumeroTarjeta { get; set; }
+        private string Nombre { get; set; }
+        private string Fecha { get; set; }
+        private int CVV { get; set; }
         public Tarjeta(int numeroTarjeta, string nombre, string fecha, int cVV)
         {
             NumeroTarjeta = 119002;
