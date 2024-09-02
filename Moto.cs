@@ -128,14 +128,7 @@ namespace Proyecto_1
         }
         public void MostrarEspacios()
         {
-            if (listaVehiculos.Count != 0)
-            {
-                Console.WriteLine("Espacios disponibles: " + listaVehiculos.Count);
-            }
-            else
-            {
-                Console.WriteLine("Espacios disponibles: 2");
-            }
+            Console.WriteLine($"Espacios disponibles: {2 - listaVehiculos.Count}");
         }
     }
 }
