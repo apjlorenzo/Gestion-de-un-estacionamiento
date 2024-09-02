@@ -9,12 +9,14 @@ namespace Proyecto_1
     public class Vehiculo
     {
         public Menu menu = new Menu();
+        public Tarjeta tarjeta = new Tarjeta(0,null,null,0);
         public string placa;
         public string marca;
         public string modelo;
         public string color;
         public int año;
         public DateTime horaEntrada;
+        public DateTime fechaFactura;
         public List<Vehiculo> listaVehiculos = new List<Vehiculo>(2);
 
         public string Placa { get; set; }
@@ -36,13 +38,13 @@ namespace Proyecto_1
         {
             horaEntrada = DateTime.Now;
             Console.Write("\nIngrese la placa del vehículo: ");
-            placa = Console.ReadLine();
+            placa = Console.ReadLine().ToUpper();
             Console.Write("Ingrese la marca del vehículo: ");
-            marca = Console.ReadLine();
+            marca = Console.ReadLine().ToUpper();
             Console.Write("Ingrese el modelo del vehículo: ");
-            modelo = Console.ReadLine();
+            modelo = Console.ReadLine().ToUpper();
             Console.Write("Ingrese el color del vehículo: ");
-            color = Console.ReadLine();
+            color = Console.ReadLine().ToUpper();
             Console.Write("Ingrese el año de lanzamiento del vehículo: ");
             año = int.Parse(Console.ReadLine());
         }
@@ -50,8 +52,7 @@ namespace Proyecto_1
         {
             foreach (Auto auto in listaVehiculos)
             {
-                int i = 1;
-                Console.WriteLine($"\nInformación del auto No.{i}:");
+                Console.WriteLine($"\nInformación del auto:");
                 Console.WriteLine("Placa: " + auto.Placa);
                 Console.WriteLine("Marca: " + auto.Marca);
                 Console.WriteLine("Modelo: " + auto.Modelo);

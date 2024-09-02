@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,7 +28,6 @@ namespace Proyecto_1
                 {
                     listaVehiculos.Add(new Moto(placa, marca, modelo, color, año, horaEntrada, sidecar));
                     menu.MensajeRegistrar();
-                    menu.MensajeContinuar();
                 }
                 else
                 {
@@ -43,9 +43,9 @@ namespace Proyecto_1
         }
         public void RetirarVehiculo()
         {
-            listaVehiculos.Add(new Auto("P11902", "Honda", "Navi", "Negro", 2024, DateTime.Now.AddHours(-2)));
+            Console.Clear();
             Console.Write("Ingrese la placa del vehículo: ");
-            string placa = Console.ReadLine();
+            string placa = Console.ReadLine().ToUpper();
             Moto encontrar = listaVehiculos.OfType<Moto>().FirstOrDefault(p => p.Placa == placa);
             if (encontrar != null)
             {
@@ -55,11 +55,44 @@ namespace Proyecto_1
                 // Calcular el costo total
                 decimal costoTotal = Moto.CalcularCosto(horasEstacionado);
 
-                // Mostrar el resultado
-                Console.WriteLine($"El vehículo con placa {encontrar.Placa} estuvo estacionado {horasEstacionado} horas.");
-                Console.WriteLine($"El costo total es: Q{costoTotal}");
+                Console.Clear();
+                Console.WriteLine("FACTURA:");
+                Console.WriteLine("Estacionamiento ELPATITO");
+                Console.WriteLine(fechaFactura = DateTime.Now);
+                Console.WriteLine("\nInformación de la moto: ");
+                Console.WriteLine("Placa: " + encontrar.Placa);
+                Console.WriteLine("Marca: " + encontrar.Marca);
+                Console.WriteLine("Modelo: " + encontrar.Modelo);
+                Console.WriteLine("Color: " + encontrar.Color);
+                Console.WriteLine($"Tiempo estacionado: {horasEstacionado} horas");
+                Console.WriteLine($"El costo total: Q{costoTotal}");
+                menu.MensajeContinuar();
 
-                listaVehiculos.Remove(encontrar);
+                Console.Clear();
+                Console.WriteLine("Seleccione el método de pago Efectivo o Tarjeta (1/2):");
+                int metodo = int.Parse(Console.ReadLine());
+                if (metodo == 1)
+                {
+                    Pago pago = new Pago(costoTotal);
+                    pago.ProcesarPagoEfectivo();
+                    listaVehiculos.Remove(encontrar);
+                }
+                else if (metodo == 2)
+                {
+                    if (tarjeta.VerificarTarjeta())
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Pago realizado correctamente.");
+                        Console.ResetColor();
+                        Console.WriteLine("\nVehículo removido del sistema.");
+                        listaVehiculos.Remove(encontrar);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No es una opción válida.");
+                }
             }
             else
             {
@@ -68,14 +101,13 @@ namespace Proyecto_1
         }
         static decimal CalcularCosto(int horasEstacionadas)
         {
-            return horasEstacionadas * 5.5m;
+            return horasEstacionadas * 5;
         }
         public void MostrarInfo()
         {
             foreach(Moto moto in listaVehiculos)
             {
-                int i = 1;
-                Console.WriteLine($"\nInformación de la moto No.{i}");
+                Console.WriteLine($"\nInformación de la moto:");
                 Console.WriteLine("Placa: " + moto.Placa);
                 Console.WriteLine("Marca: " + moto.Marca);
                 Console.WriteLine("Modelo: " + moto.Modelo);
@@ -83,6 +115,25 @@ namespace Proyecto_1
                 Console.WriteLine("Año: " + moto.Año);
                 Console.WriteLine("Sidecar: " + moto.SideCar);
                 Console.WriteLine("Fecha de ingreso: " + moto.HoraEntrada);
+            }
+        }
+        public void Agregar()
+        {
+            listaVehiculos.Add(new Moto("P11903", "Honda", "Navi", "Negro", 2024, DateTime.Now.AddHours(-2), null));
+        }
+        public void Limpiar()
+        {
+            listaVehiculos.Clear();
+        }
+        public void MostrarEspacios()
+        {
+            if (listaVehiculos.Count != 0)
+            {
+                Console.WriteLine("Espacios disponibles: " + listaVehiculos.Count);
+            }
+            else
+            {
+                Console.WriteLine("Espacios disponibles: 2");
             }
         }
     }

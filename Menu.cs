@@ -33,10 +33,24 @@ namespace Proyecto_1
             Console.WriteLine("___________________________________");
             Console.Write("Ingrese una opción: ");
         }
+        public void MenuRetirar()
+        {
+            Console.Clear();
+            Console.WriteLine("___________________________________");
+            Console.WriteLine("::::::::::RETIRAR VEHÍCULOS::::::::");
+            Console.WriteLine("1.Retirar Auto");
+            Console.WriteLine("2.Retirar Moto");
+            Console.WriteLine("3.Retirar Camión");
+            Console.WriteLine("4.Regresar");
+            Console.WriteLine("___________________________________");
+            Console.Write("Ingrese una opción: ");
+        }
         public void MensajeRegistrar()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Vehículo registrado correctamente.");
+            Console.ResetColor();
         }
         public void MensajeContinuar()
         {

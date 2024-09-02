@@ -36,6 +36,7 @@ try
                                     break;
                                 case 2:
                                     moto.AgregarVehiculo();
+                                    menu.MensajeContinuar();    
                                     break;
                                 case 3:
                                     camion.AgregarVehiculo();
@@ -60,37 +61,69 @@ try
                     }
                     break;
                 case 2:
-                    Console.Clear();
-                    Console.WriteLine("Ingrese el tipo de vehículo a retirar: ");
-                    int tipo = int.Parse(Console.ReadLine());
-                    if (tipo == 1)
+                    bool continuarTres = true;
+                    while (continuarTres)
                     {
-                        auto.RetirarVehiculo();
-                    }
-                    else if (tipo == 2)
-                    {
-                        moto.RetirarVehiculo();
-                    }
-                    else if (tipo == 3)
-                    {
-                        camion.RetirarVehiculo();
+                        menu.MenuRetirar();
+                        int opcionRetirar = int.Parse(Console.ReadLine());
+                        switch (opcionRetirar)
+                        {
+                            case 1:
+                                auto.RetirarVehiculo();
+                                Console.ReadKey();
+                                break;
+                            case 2:
+                                moto.RetirarVehiculo();
+                                Console.ReadKey();
+                                break;
+                            case 3:
+                                camion.RetirarVehiculo(); 
+                                Console.ReadKey();
+                                break;
+                            case 4:
+                                continuarTres = false;
+                                break;
+                        } 
                     }
                     Console.ReadKey();
                     break;
                 case 3:
                     Console.Clear();
-                    Console.WriteLine("Autos estacionados: :");
+                    Console.WriteLine("--------------------------");
+                    Console.WriteLine("Autos estacionados: ");
                     auto.MostrarInfo();
+                    Console.WriteLine("___________________________");
                     Console.WriteLine("\nMotos estacionadas: ");
+                    Console.WriteLine("--------------------------");
                     moto.MostrarInfo();
+                    Console.WriteLine("___________________________");
                     Console.WriteLine("\nCamiones estacionados: ");
+                    Console.WriteLine("--------------------------");
                     camion.MostrarInfo();
-                    Console.ReadKey();
+                    menu.MensajeContinuar();
                     break;
                 case 4:
+                    Console.Clear();
+                    Console.WriteLine("Espacios disponibles para autos");
+                    auto.MostrarEspacios();
+                    Console.WriteLine("Espacios disponibles para motos");
+                    moto.MostrarEspacios();
+                    Console.WriteLine("Espacios disponibles para camiones");
+                    camion.MostrarEspacios();
+                    menu.MensajeContinuar();
                     break;
                 case 5:
                     condicionUno = false;
+                    break;
+                case 6:
+                    auto.Agregar();
+                    moto.Agregar();
+                    camion.Agregar();
+                    break;
+                case 7:
+                    auto.Limpiar();
+                    moto.Limpiar();
+                    camion.Limpiar();
                     break;
                 default:
                     Console.Clear();
